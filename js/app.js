@@ -6,7 +6,7 @@ function adicionar() {
     let regex = /[^a-zA-ZÀ-ÿ\s]/g;
     let nome = ' ' + document.getElementById('nome-amigo').value;
     document.getElementById('nome-amigo').value = '';
-    if (nome == '') {
+    if (nome == ' ') {
         alert('Escreva um nome!');
     } else if (amigos.includes(nome)) {
         alert('Esse nome já existe!');
