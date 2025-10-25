@@ -1,17 +1,164 @@
+  /* ========================================= */
+/* Estilos Gerais e Reset (Mantidos)         */
+/* ========================================= */
 body {
   background: #000;
   min-height: 100vh;
-  position: relative;
+  position: relative; /* Necessário para o z-index e elementos absolutos */
+  font-family: 'Inter', sans-serif; /* Definir fonte padrão */
+
+  /* --- MUDANÇA: Usando Flexbox para centralizar --- */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Alinha ao topo */
+  padding: 2rem; /* Espaçamento para não colar nas bordas */
+  box-sizing: border-box;
+  overflow-x: hidden; /* Evitar scroll horizontal */
 }
 
+/* ========================================= */
+/* Detalhe de Fundo (O "Brilho")             */
+/* ========================================= */
 .background__detail {
   background-color: #00f4bf;
-  height: calc(100% - 389px);
+  height: 400px; /* Altura fixa é mais estável */
   left: 0;
   position: absolute;
   right: 0;
-  top: 195px;
-  z-index: 0;
+  top: 150px; /* Posição ajustada */
+  z-index: 0; /* Camada 0 (atrás de tudo) */
+
+  /* --- MELHORIA: Efeito de brilho real --- */
+  opacity: 0.6;
+  filter: blur(100px);
+}
+
+/* ========================================= */
+/* Layout Principal (Main e Content)         */
+/* ========================================= */
+
+main {
+  position: relative; /* Container para .content e .page__image */
+  width: 100%;
+  max-width: 1200px; /* Largura máxima do layout */
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  z-index: 1; /* Fica acima do .background__detail */
+}
+
+.content {
+  background-color: #000;
+  border: 1px solid #1875e8;
+  filter: drop-shadow(0px 0px 30px #1875e8);
+  
+  /* --- MUDANÇA: Layout Flexível --- */
+  /* Removemos position: absolute, top, left, transform e height: 871px */
+  position: relative; /* Para o z-index e o .content__corner-rectangle */
+  z-index: 1;
+  width: 100%;
+  max-width: 800px; /* Caixa de conteúdo terá no máximo 800px */
+  margin: 0 auto; /* Centraliza a caixa de conteúdo dentro do 'main' */
+  padding: 60px; /* Padding ajustado */
+  box-sizing: border-box;
+}
+
+.content__main {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* Espaço ajustado */
+  justify-content: start;
+  /* Removemos o padding de 100px, pois já está no .content */
+}
+
+/* --- MUDANÇA: Posição da Imagem --- */
+.page__image {
+  position: absolute;
+  /* Agora está relativa ao 'main' (max-width: 1200px) */
+  right: 10px;
+  top: 50px;
+  z-index: 2; /* Fica acima do .content (z-index: 1) */
+  pointer-events: none;
+  width: 450px; /* Tamanho controlado */
+  height: auto;
+}
+
+.content__corner-rectangle {
+  background-color: #00f4bf;
+  bottom: -15px;
+  clip-path: polygon(0% 100%, 0% 50%, 4% 0%, 100% 0%, 100% 50%, 96% 100%);
+  height: 33px;
+  position: absolute;
+  right: 32px;
+  width: 511px;
+  max-width: 80%; /* Ajuste para responsividade */
+  z-index: 3;
+}
+
+
+/* ========================================= */
+/* Formulário (Responsivo)                   */
+/* ========================================= */
+
+.section__title {
+  color: #fff;
+  font-family: Chakra Petch;
+  font-size: 88px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80%;
+  margin: 0 0 80px 0;
+}
+
+.section__title > span {
+  color: #1875e8;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  font-family: Inter;
+  font-style: normal;
+}
+
+.form__label {
+  color: #1875e8;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 110%;
+  margin-bottom: 16px;
+}
+
+.form__input {
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #1875e8;
+  border-radius: 8px;
+  color: #fff;
+  display: flex;
+  font-size: 21px;
+  font-weight: 400;
+  height: 56px;
+  margin-bottom: 32px;
+  outline: none;
+  padding: 8px 16px;
+  
+  /* --- MUDANÇA: Responsivo --- */
+  width: 100%; /* Ocupa 100% do espaço disponível */
+  max-width: 517px; /* Mas não passa de 517px */
+  box-sizing: border-box; /* Garante que o padding não aumente a largura */
+}
+
+.form__input::placeholder {
+  color: #fff;
+  font-size: 21px;
+}
+
+.form__buttons {
+  align-items: center;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap; /* Permite que os botões quebrem a linha se não couberem */
 }
 
 .button {
@@ -31,66 +178,51 @@ body {
   line-height: normal;
   padding: 16px 24px;
   text-align: center;
+  
+  /* --- MUDANÇA: Responsivo --- */
   width: 208px;
+  flex-grow: 1; /* Permite que os botões cresçam se houver espaço */
+  max-width: 208px; /* Limita o crescimento */
 }
 
-.container-codigo {
-  color: whitesmoke;
-  width: 100%;
-  position: fixed;
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: right;
+.primary {
+  background-color: #1875e8;
+  color: #fff;
+}
+
+.secondary {
+  background-color: #fff;
+  color: #1875e8;
+}
+
+.form__link {
+  color: #00f4bf;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 110%;
   text-align: center;
-  top: 20px;
-  font-family: 'Inter', sans-serif;
-  z-index: 0;
+  text-decoration-line: underline;
 }
 
-#codigo {
-  color: whitesmoke; 
-  padding: 0%; 
-  width: 100%;
-  text-decoration: none;
-  transition: font-size 0.3s ease;
-}
+/* ========================================= */
+/* Resultados (Responsivo)                   */
+/* ========================================= */
 
-#codigo:hover {
-  color: white;
-  font-size: 1.23rem;
-}
-
-.content {
-  background-color: #000;
-  border: 1px solid #1875e8;
-  filter: drop-shadow(0px 0px 30px #1875e8);
-  height: 871px;
-  left: 50%;
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 75%;
-  z-index: 1;
-}
-
-.content__corner-rectangle {
-  background-color: #00f4bf;
-  bottom: -15px;
-  clip-path: polygon(0% 100%, 0% 50%, 4% 0%, 100% 0%, 100% 50%, 96% 100%);
-  height: 33px;
-  position: absolute;
-  right: 32px;
-  width: 511px;
-  z-index: 3;
-}
-
-.content__main {
+.section--results {
+  align-items: start;
   display: flex;
-  flex-direction: column;
-  gap: 80px;
-  justify-content: start;
-  padding: 100px;
+  font-family: Inter;
+  font-style: normal;
+  gap: 48px;
+  flex-wrap: wrap; /* Permite que as colunas quebrem no mobile */
+}
+
+.friends__title {
+  color: #1875e8;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 110%;
 }
 
 .friends__container {
@@ -105,7 +237,12 @@ body {
   line-height: 160%;
   margin-top: 1rem;
   padding: 24px;
-  width: 453px;
+  
+  /* --- MUDANÇA: Responsivo --- */
+  width: 100%; /* Ocupa o espaço do container-pai */
+  max-width: 453px; /* Limite máximo */
+  min-height: 100px; /* Altura mínima para não ficar estranho vazio */
+  box-sizing: border-box;
 }
 
 .friends__container > p {
@@ -113,73 +250,14 @@ body {
   font-size: 21px;
   font-weight: 400;
   line-height: 160%;
+  word-break: break-all; /* Evita que nomes grandes quebrem o layout */
 }
 
-.friends__title {
-  color: #1875e8;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 110%;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  font-family: Inter;
-  font-style: normal;
-}
-
-.form__buttons {
-  align-items: center;
-  display: flex;
-  gap: 32px;
-}
-
-.form__input {
-  align-items: center;
-  background-color: transparent;
-  border: 1px solid #1875e8;
-  border-radius: 8px;
-  color: #fff;
-  display: flex;
-  font-size: 21px;
-  font-weight: 400;
-  height: 56px;
-  margin-bottom: 32px;
-  outline: none;
-  padding: 8px 16px;
-  width: 517px;
-}
-
-.form__input::placeholder {
-  color: #fff;
-  font-size: 21px;
-}
-
-.form__label {
-  color: #1875e8;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 110%;
-  margin-bottom: 16px;
-}
-
-.form__link {
+.prizeDraw__title {
   color: #00f4bf;
-  cursor: pointer;
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 110%;
-  text-align: center;
-  text-decoration-line: underline;
-}
-
-.page__image {
-  position: absolute;
-  right: 0;
-  top: 76px;
-  z-index: 2;
-  pointer-events: none;
 }
 
 .prizeDraw__container {
@@ -190,45 +268,39 @@ body {
   height: 199px;
   line-height: 160%;
   margin-top: 1rem;
+  width: 100%; /* Garante que ocupe o espaço */
+  word-break: break-all;
 }
 
-.prizeDraw__title {
-  color: #00f4bf;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 110%;
-}
+/* ========================================= */
+/* Header e Footer (Links Fixos)             */
+/* ========================================= */
 
-.primary {
-  background-color: #1875e8;
-  color: #fff;
-}
-
-.section--results {
-  align-items: start;
+.container-codigo {
+  color: whitesmoke;
+  width: 100%;
+  position: fixed;
+  font-size: 1.2rem;
   display: flex;
-  font-family: Inter;
-  font-style: normal;
-  gap: 48px;
+  justify-content: right;
+  text-align: center;
+  top: 20px;
+  right: 20px; /* Adicionado para garantir o espaçamento */
+  font-family: 'Inter', sans-serif;
+  z-index: 10; /* Camada 10 (acima de tudo) */
 }
 
-.section__title {
-  color: #fff;
-  font-family: Chakra Petch;
-  font-size: 88px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 80%;
-  margin: 0 0 80px 0;
+#codigo {
+  color: whitesmoke;
+  padding: 0;
+  width: auto; /* Ajustado */
+  text-decoration: none;
+  transition: font-size 0.3s ease;
 }
 
-.section__title > span {
-  color: #1875e8;
-}
-
-.secondary {
-  background-color: #fff;
-  color: #1875e8;
+#codigo:hover {
+  color: white;
+  font-size: 1.23rem;
 }
 
 footer {
@@ -238,19 +310,102 @@ footer {
   font-size: 1.2rem;
   text-align: center;
   bottom: 15px;
+  left: 0; /* Adicionado para garantir */
   font-family: 'Inter', sans-serif;
-  z-index: 1;
+  z-index: 10; /* Camada 10 (acima de tudo) */
 }
 
 footer a {
   color: whitesmoke;
-  padding: 0%; 
+  padding: 0%;
   width: 100%;
   text-decoration: none;
   transition: font-size 0.3s ease;
 }
 
 footer a:hover {
-color: white;
-font-size: 1.21rem;
+  color: white;
+  font-size: 1.21rem;
+}
+
+
+/* ========================================= */
+/* ### MEDIA QUERY PARA MOBILE ###           */
+/* (Regras para telas menores que 768px)     */
+/* ========================================= */
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem; /* Menos padding */
+  }
+
+  main {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  /* --- MUDANÇA: Esconder a imagem --- */
+  /* Esta é a imagem que estava a tapar o texto ("brilho azul") */
+  .page__image {
+    display: none; 
+  }
+
+  .content {
+    padding: 30px; /* Menos padding interno */
+  }
+
+  .content__main {
+    gap: 40px; /* Menos espaço */
+  }
+
+  .section__title {
+    font-size: 48px; /* Título menor */
+    margin-bottom: 40px;
+    text-align: center; /* Centralizar título */
+  }
+
+  /* --- MUDANÇA: Empilhar botões --- */
+  .form__buttons {
+    flex-direction: column; /* Botões um em cima do outro */
+    gap: 16px;
+    align-items: stretch; /* Botões ocupam 100% da largura */
+  }
+
+  .button {
+    width: 100%; /* Botões 100% */
+    max-width: 100%; /* Remove o limite max-width */
+  }
+
+  .form__input {
+     max-width: 100%; /* Input 100% */
+  }
+  
+  /* --- MUDANÇA: Empilhar resultados --- */
+  .section--results {
+    flex-direction: column; /* Empilhar seções de resultado */
+    gap: 30px;
+  }
+
+  .friends__container {
+    max-width: 100%; /* Lista de amigos 100% */
+  }
+
+  .content__corner-rectangle {
+    width: 90%;
+    right: 5%; /* Centralizar o detalhe */
+  }
+
+  .container-codigo, footer {
+     font-size: 1rem; /* Fonte menor no rodapé/header */
+     position: static; /* Remover 'fixed' para não atrapalhar a rolagem */
+     margin-top: 2rem;
+     width: 100%;
+     text-align: center;
+     justify-content: center;
+  }
+
+  .container-codigo {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
 }
