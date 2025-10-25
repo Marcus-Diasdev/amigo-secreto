@@ -1,4 +1,4 @@
-  /* ========================================= */
+8  /* ========================================= */
 /* Estilos Gerais e Reset (Mantidos)         */
 /* ========================================= */
 body {
@@ -281,8 +281,6 @@ main {
   width: 100%;
   position: fixed;
   font-size: 1.2rem;
-  display: flex;
-  justify-content: right;
   text-align: center;
   top: 20px;
   right: 20px; /* Adicionado para garantir o espaçamento */
