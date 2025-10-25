@@ -1,42 +1,28 @@
-/* ========================================= */
-/* Estilos Gerais e Reset (Mantidos)         */
-/* ========================================= */
 body {
   background: #000;
   min-height: 100vh;
-  position: relative; /* Necessário para o z-index e elementos absolutos */
-  font-family: 'Inter', sans-serif; /* Definir fonte padrão */
-
-  /* --- MUDANÇA: Usando Flexbox para centralizar --- */
+  position: relative;
+  font-family: 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Alinha ao topo */
-  padding: 2rem; /* Espaçamento para não colar nas bordas */
+  justify-content: flex-start;  
+  padding: 2rem; 
   box-sizing: border-box;
-  overflow-x: hidden; /* Evitar scroll horizontal */
+  overflow-x: hidden; 
 }
 
-/* ========================================= */
-/* Detalhe de Fundo (O "Brilho")             */
-/* ========================================= */
 .background__detail {
   background-color: #00f4bf;
-  height: 400px; /* Altura fixa é mais estável */
+  height: 400px; 
   left: 0;
   position: absolute;
   right: 0;
-  top: 150px; /* Posição ajustada */
-  z-index: 0; /* Camada 0 (atrás de tudo) */
-
-  /* --- MELHORIA: Efeito de brilho real --- */
+  top: 150px;
+  z-index: 0; 
   opacity: 0.6;
   filter: blur(100px);
 }
-
-/* ========================================= */
-/* Layout Principal (Main e Content)         */
-/* ========================================= */
 
 main {
   position: relative; /* Container para .content e .page__image */
