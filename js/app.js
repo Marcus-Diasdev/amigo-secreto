@@ -4,7 +4,7 @@ let listaSorteio = document.getElementById('lista-sorteio');
 
 function adicionar() {
     let regex = /[^a-zA-ZÀ-ÿ\s]/g;
-    let nome = document.getElementById('nome-amigo').value;
+    let nome = ' ' + document.getElementById('nome-amigo').value;
     document.getElementById('nome-amigo').value = '';
     if (nome.length <= 0) {
         alert('Escreva um nome!');
