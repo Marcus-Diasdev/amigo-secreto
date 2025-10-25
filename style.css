@@ -25,47 +25,42 @@ body {
 }
 
 main {
-  position: relative; /* Container para .content e .page__image */
+  position: relative; 
   width: 100%;
-  max-width: 1200px; /* Largura máxima do layout */
+  max-width: 1200px; 
   margin-top: 5rem;
   margin-bottom: 5rem;
-  z-index: 1; /* Fica acima do .background__detail */
+  z-index: 1; 
 }
 
 .content {
   background-color: #000;
   border: 1px solid #1875e8;
   filter: drop-shadow(0px 0px 30px #1875e8);
-  
-  /* --- MUDANÇA: Layout Flexível --- */
-  /* Removemos position: absolute, top, left, transform e height: 871px */
-  position: relative; /* Para o z-index e o .content__corner-rectangle */
+  position: relative; 
   z-index: 1;
   width: 100%;
-  max-width: 800px; /* Caixa de conteúdo terá no máximo 800px */
-  margin: 0 auto; /* Centraliza a caixa de conteúdo dentro do 'main' */
-  padding: 60px; /* Padding ajustado */
+  max-width: 800px; 
+  margin: 0 auto; 
+  padding: 60px; 
   box-sizing: border-box;
 }
 
 .content__main {
   display: flex;
   flex-direction: column;
-  gap: 60px; /* Espaço ajustado */
+  gap: 60px; 
   justify-content: start;
-  /* Removemos o padding de 100px, pois já está no .content */
 }
 
-/* --- MUDANÇA: Posição da Imagem --- */
+
 .page__image {
   position: absolute;
-  /* Agora está relativa ao 'main' (max-width: 1200px) */
   right: 10px;
   top: 50px;
-  z-index: 2; /* Fica acima do .content (z-index: 1) */
+  z-index: 2; 
   pointer-events: none;
-  width: 450px; /* Tamanho controlado */
+  width: 450px; 
   height: auto;
 }
 
@@ -77,14 +72,9 @@ main {
   position: absolute;
   right: 32px;
   width: 511px;
-  max-width: 80%; /* Ajuste para responsividade */
+  max-width: 80%; 
   z-index: 3;
 }
-
-
-/* ========================================= */
-/* Formulário (Responsivo)                   */
-/* ========================================= */
 
 .section__title {
   color: #fff;
@@ -128,11 +118,9 @@ main {
   margin-bottom: 32px;
   outline: none;
   padding: 8px 16px;
-  
-  /* --- MUDANÇA: Responsivo --- */
-  width: 100%; /* Ocupa 100% do espaço disponível */
-  max-width: 517px; /* Mas não passa de 517px */
-  box-sizing: border-box; /* Garante que o padding não aumente a largura */
+  width: 100%; 
+  max-width: 517px; 
+  box-sizing: border-box; 
 }
 
 .form__input::placeholder {
@@ -144,7 +132,7 @@ main {
   align-items: center;
   display: flex;
   gap: 32px;
-  flex-wrap: wrap; /* Permite que os botões quebrem a linha se não couberem */
+  flex-wrap: wrap; 
 }
 
 .button {
@@ -164,11 +152,9 @@ main {
   line-height: normal;
   padding: 16px 24px;
   text-align: center;
-  
-  /* --- MUDANÇA: Responsivo --- */
   width: 208px;
-  flex-grow: 1; /* Permite que os botões cresçam se houver espaço */
-  max-width: 208px; /* Limita o crescimento */
+  flex-grow: 1; 
+  max-width: 208px; 
 }
 
 .primary {
@@ -191,17 +177,13 @@ main {
   text-decoration-line: underline;
 }
 
-/* ========================================= */
-/* Resultados (Responsivo)                   */
-/* ========================================= */
-
 .section--results {
   align-items: start;
   display: flex;
   font-family: Inter;
   font-style: normal;
   gap: 48px;
-  flex-wrap: wrap; /* Permite que as colunas quebrem no mobile */
+  flex-wrap: wrap; 
 }
 
 .friends__title {
@@ -223,11 +205,9 @@ main {
   line-height: 160%;
   margin-top: 1rem;
   padding: 24px;
-  
-  /* --- MUDANÇA: Responsivo --- */
-  width: 100%; /* Ocupa o espaço do container-pai */
-  max-width: 453px; /* Limite máximo */
-  min-height: 100px; /* Altura mínima para não ficar estranho vazio */
+  width: 100%; 
+  max-width: 453px; 
+  min-height: 100px; 
   box-sizing: border-box;
 }
 
@@ -236,7 +216,7 @@ main {
   font-size: 21px;
   font-weight: 400;
   line-height: 160%;
-  word-break: break-all; /* Evita que nomes grandes quebrem o layout */
+  word-break: break-all;
 }
 
 .prizeDraw__title {
@@ -254,13 +234,9 @@ main {
   height: 199px;
   line-height: 160%;
   margin-top: 1rem;
-  width: 100%; /* Garante que ocupe o espaço */
+  width: 100%; 
   word-break: break-all;
 }
-
-/* ========================================= */
-/* Header e Footer (Links Fixos)             */
-/* ========================================= */
 
 .container-codigo {
   color: whitesmoke;
@@ -269,15 +245,15 @@ main {
   font-size: 1.2rem;
   text-align: center;
   top: 20px;
-  right: 20px; /* Adicionado para garantir o espaçamento */
+  right: 20px; 
   font-family: 'Inter', sans-serif;
-  z-index: 10; /* Camada 10 (acima de tudo) */
+  z-index: 10;
 }
 
 #codigo {
   color: whitesmoke;
   padding: 0;
-  width: auto; /* Ajustado */
+  width: auto; 
   text-decoration: none;
   transition: font-size 0.3s ease;
 }
@@ -294,9 +270,9 @@ footer {
   font-size: 1.2rem;
   text-align: center;
   bottom: 15px;
-  left: 0; /* Adicionado para garantir */
+  left: 0; 
   font-family: 'Inter', sans-serif;
-  z-index: 10; /* Camada 10 (acima de tudo) */
+  z-index: 10; 
 }
 
 footer a {
@@ -312,15 +288,9 @@ footer a:hover {
   font-size: 1.21rem;
 }
 
-
-/* ========================================= */
-/* ### MEDIA QUERY PARA MOBILE ###           */
-/* (Regras para telas menores que 768px)     */
-/* ========================================= */
-
 @media (max-width: 768px) {
   body {
-    padding: 1rem; /* Menos padding */
+    padding: 1rem; 
   }
 
   main {
@@ -328,60 +298,56 @@ footer a:hover {
     margin-bottom: 4rem;
   }
 
-  /* --- MUDANÇA: Esconder a imagem --- */
-  /* Esta é a imagem que estava a tapar o texto ("brilho azul") */
   .page__image {
     display: none; 
   }
 
   .content {
-    padding: 30px; /* Menos padding interno */
+    padding: 30px; 
   }
 
   .content__main {
-    gap: 40px; /* Menos espaço */
+    gap: 40px; 
   }
 
   .section__title {
-    font-size: 48px; /* Título menor */
+    font-size: 48px; 
     margin-bottom: 40px;
-    text-align: center; /* Centralizar título */
+    text-align: center; 
   }
 
-  /* --- MUDANÇA: Empilhar botões --- */
   .form__buttons {
-    flex-direction: column; /* Botões um em cima do outro */
+    flex-direction: column; 
     gap: 16px;
-    align-items: stretch; /* Botões ocupam 100% da largura */
+    align-items: stretch; 
   }
 
   .button {
-    width: 100%; /* Botões 100% */
-    max-width: 100%; /* Remove o limite max-width */
+    width: 100%; 
+    max-width: 100%; 
   }
 
   .form__input {
-     max-width: 100%; /* Input 100% */
+     max-width: 100%; 
   }
   
-  /* --- MUDANÇA: Empilhar resultados --- */
   .section--results {
-    flex-direction: column; /* Empilhar seções de resultado */
+    flex-direction: column; 
     gap: 30px;
   }
 
   .friends__container {
-    max-width: 100%; /* Lista de amigos 100% */
+    max-width: 100%; 
   }
 
   .content__corner-rectangle {
     width: 90%;
-    right: 5%; /* Centralizar o detalhe */
+    right: 5%; 
   }
 
   .container-codigo, footer {
-     font-size: 1rem; /* Fonte menor no rodapé/header */
-     position: static; /* Remover 'fixed' para não atrapalhar a rolagem */
+     font-size: 1rem; 
+     position: static; 
      margin-top: 2rem;
      width: 100%;
      text-align: center;
